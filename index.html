@@ -1,0 +1,209 @@
+<div style="background-color: #1e293b; color: #ffffff; padding: 24px; border-radius: 8px; font-family: Arial, sans-serif; border: 2px solid #1c8a24; max-width: 800px; margin: 20px auto;">
+    <h3 style="color: #38bdf8; text-align: center; margin-top: 0; font-size: 24px;">Interactive Disney's 12 Principles of Animation Explorer</h3>
+    <p style="text-align: center; color: #cbd5e1; font-size: 14px; margin-bottom: 20px;">Click any principle below to explore its core definition, real-world application, and interactive demonstration.</p>
+
+    <!-- Navigation Tabs / Buttons Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-bottom: 20px;" id="principle-nav">
+        <button onclick="showPrinciple(0)" class="p-btn active" style="background: #1c8a24; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">1. Squash & Stretch</button>
+        <button onclick="showPrinciple(1)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">2. Anticipation</button>
+        <button onclick="showPrinciple(2)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">3. Staging</button>
+        <button onclick="showPrinciple(3)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">4. Straight Ahead & Pose</button>
+        <button onclick="showPrinciple(4)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">5. Follow Through</button>
+        <button onclick="showPrinciple(5)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">6. Slow In / Slow Out</button>
+        <button onclick="showPrinciple(6)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">7. Arcs</button>
+        <button onclick="showPrinciple(7)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">8. Secondary Action</button>
+        <button onclick="showPrinciple(8)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">9. Timing</button>
+        <button onclick="showPrinciple(9)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">10. Exaggeration</button>
+        <button onclick="showPrinciple(10)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">11. Solid Drawing</button>
+        <button onclick="showPrinciple(11)" class="p-btn" style="background: #334155; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">12. Appeal</button>
+    </div>
+
+    <!-- Display Panel -->
+    <div id="principle-display" style="background: #0f172a; padding: 20px; border-radius: 6px; border: 1px solid #475569; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+            <h4 id="p-title" style="color: #38bdf8; margin-top: 0; font-size: 20px; border-bottom: 1px solid #334155; padding-bottom: 8px;">1. Squash and Stretch</h4>
+            <p id="p-desc" style="color: #e2e8f0; font-size: 15px; line-height: 1.5;">Imparts a sense of weight, volume, and flexibility. A rigid object looks dead; by retaining overall volume while distorting shape—flattening on impact and elongating during rapid motion—an animator tricks the human eye into perceiving mass and elasticity.</p>
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+            <button onclick="triggerDemo()" style="background: #38bdf8; color: #0f172a; border: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; cursor: pointer;">Run Live Animation Demo</button>
+            <div id="demo-box" style="width: 60px; height: 60px; background: #38bdf8; border-radius: 50%; margin: 20px auto 0 auto; transition: transform 0.3s ease;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+const principles = [
+    {
+        title: "1. Squash and Stretch",
+        desc: "Imparts a sense of weight, volume, and flexibility. Flattening on impact and elongating during rapid motion tricks the human eye into perceiving mass and elasticity.",
+        anim: (box) => {
+            box.style.transition = "transform 0.4s ease";
+            box.style.transform = "scaleY(0.4) scaleX(1.6) translateY(30px)";
+            setTimeout(() => {
+                box.style.transform = "scaleY(1.5) scaleX(0.7) translateY(-30px)";
+            }, 400);
+            setTimeout(() => {
+                box.style.transform = "scale(1)";
+            }, 800);
+        }
+    },
+    {
+        title: "2. Anticipation",
+        desc: "Prepares the audience for a major action by executing a preliminary movement in the opposite direction (e.g., bending knees before a massive leap).",
+        anim: (box) => {
+            box.style.transition = "transform 0.3s ease";
+            box.style.transform = "scaleY(0.7) translateY(15px)";
+            setTimeout(() => {
+                box.style.transform = "translateY(-60px)";
+            }, 300);
+            setTimeout(() => {
+                box.style.transform = "translateY(0)";
+            }, 700);
+        }
+    },
+    {
+        title: "3. Staging",
+        desc: "The presentation of any idea to make it completely unmistakable. Staging directs the audience's eye to what is most important using placement, silhouette, and framing.",
+        anim: (box) => {
+            box.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+            box.style.transform = "scale(1.4)";
+            box.style.boxShadow = "0 0 20px #38bdf8";
+            setTimeout(() => {
+                box.style.transform = "scale(1)";
+                box.style.boxShadow = "none";
+            }, 700);
+        }
+    },
+    {
+        title: "4. Straight Ahead Action and Pose to Pose",
+        desc: "Straight ahead animators draw frame-by-frame for fluid unpredictability; pose-to-pose animators map key extremes first for precise control.",
+        anim: (box) => {
+            box.style.transition = "transform 0.2s steps(4, end)";
+            box.style.transform = "translateX(-50px)";
+            setTimeout(() => { box.style.transform = "translateX(50px)"; }, 200);
+            setTimeout(() => { box.style.transform = "translateX(-30px)"; }, 400);
+            setTimeout(() => { box.style.transform = "translateX(0)"; }, 600);
+        }
+    },
+    {
+        title: "5. Follow Through and Overlapping Action",
+        desc: "Captures the physics of inertia. When a body stops, loose parts (hair, tail, clothing) continue moving before settling.",
+        anim: (box) => {
+            box.style.transition = "transform 0.3s ease";
+            box.style.transform = "translateX(40px) skewX(-20deg)";
+            setTimeout(() => {
+                box.style.transform = "translateX(40px) skewX(10deg)";
+            }, 300);
+            setTimeout(() => {
+                box.style.transform = "translateX(0) skewX(0deg)";
+            }, 600);
+        }
+    },
+    {
+        title: "6. Slow In and Slow Out (Ease In/Ease Out)",
+        desc: "Objects accelerate and decelerate gradually. Spacing drawings closer near the beginning and end creates natural momentum.",
+        anim: (box) => {
+            box.style.transition = "transform 1s cubic-bezier(0.25, 1, 0.5, 1)";
+            box.style.transform = "translateX(90px)";
+            setTimeout(() => {
+                box.style.transition = "transform 1s cubic-bezier(0.5, 0, 0.75, 0)";
+                box.style.transform = "translateX(0)";
+            }, 1000);
+        }
+    },
+    {
+        title: "7. Arcs",
+        desc: "Natural motion in the physical world almost always travels along curved, circular paths rather than rigid straight lines.",
+        anim: (box) => {
+            box.style.transition = "transform 0.8s ease-in-out";
+            box.style.transform = "translate(60px, -40px)";
+            setTimeout(() => {
+                box.style.transform = "translate(0, 0)";
+            }, 800);
+        }
+    },
+    {
+        title: "8. Secondary Action",
+        desc: "Adding smaller, subsidiary movements (whistling, tapping fingers) to reinforce and enrich the primary action without stealing focus.",
+        anim: (box) => {
+            box.style.transition = "transform 0.2s ease";
+            box.style.transform = "rotate(15deg)";
+            setTimeout(() => { box.style.transform = "rotate(-15deg)"; }, 200);
+            setTimeout(() => { box.style.transform = "rotate(15deg)"; }, 400);
+            setTimeout(() => { box.style.transform = "rotate(0deg)"; }, 600);
+        }
+    },
+    {
+        title: "9. Timing",
+        desc: "The number of frames inserted between actions, dictating weight, speed, and emotional tone (more frames = heavy/slow, fewer = snappy/light).",
+        anim: (box) => {
+            box.style.transition = "transform 0.1s linear";
+            box.style.transform = "scale(1.3)";
+            setTimeout(() => { box.style.transform = "scale(0.8)"; }, 100);
+            setTimeout(() => { box.style.transform = "scale(1)"; }, 200);
+        }
+    },
+    {
+        title: "10. Exaggeration",
+        desc: "Pushing physical limits past the breaking point to convey emotional truth more clearly than a subtle, realistic movement ever could.",
+        anim: (box) => {
+            box.style.transition = "transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+            box.style.transform = "scale(1.8) rotate(360deg)";
+            setTimeout(() => {
+                box.style.transform = "scale(1) rotate(0deg)";
+            }, 500);
+        }
+    },
+    {
+        title: "11. Solid Drawing",
+        desc: "Ensuring 2D and 3D shapes feel genuinely volumetric by mastering weight, balance, and anatomy in perspective, preventing flatness.",
+        anim: (box) => {
+            box.style.transition = "transform 0.5s ease";
+            box.style.transform = "perspective(200px) rotateY(45deg)";
+            setTimeout(() => {
+                box.style.transform = "perspective(200px) rotateY(-45deg)";
+            }, 500);
+            setTimeout(() => {
+                box.style.transform = "perspective(200px) rotateY(0deg)";
+            }, 1000);
+        }
+    },
+    {
+        title: "12. Appeal",
+        desc: "Giving characters a charismatic design, magnetic charm, and a distinct, readable silhouette that audiences find captivating.",
+        anim: (box) => {
+            box.style.transition = "transform 0.4s ease";
+            box.style.transform = "translateY(-20px) scale(1.2)";
+            setTimeout(() => {
+                box.style.transform = "translateY(0) scale(1)";
+            }, 400);
+        }
+    }
+];
+
+let currentIndex = 0;
+
+function showPrinciple(index) {
+    currentIndex = index;
+    const btns = document.querySelectorAll('.p-btn');
+    btns.forEach((b, i) => {
+        b.style.background = i === index ? "#1c8a24" : "#334155";
+    });
+    
+    document.getElementById('p-title').innerText = principles[index].title;
+    document.getElementById('p-desc').innerText = principles[index].desc;
+    
+    // Reset box state
+    const box = document.getElementById('demo-box');
+    box.style.transition = "none";
+    box.style.transform = "none";
+}
+
+function triggerDemo() {
+    const box = document.getElementById('demo-box');
+    box.style.transition = "none";
+    box.style.transform = "none";
+    void box.offsetWidth; // trigger reflow
+    principles[currentIndex].anim(box);
+}
+</script>
